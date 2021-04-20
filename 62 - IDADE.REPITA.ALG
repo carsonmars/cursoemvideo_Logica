@@ -1,9 +1,10 @@
-algoritmo "idade.sexo"
-var
-  sexo,idade,maiorIdade,menorIdade, somaIdadeHomens,h:inteiro
-  nome,stop:caractere
-  xHomens:real
+algoritmo "IDADE.REPITA"
 
+var
+   i, nome:caractere
+   idade,sexo,contIdade,y,somaIdade: inteiro
+   x:real
+   
    procedimento cabeca()
    inicio
       escreval("-----------------------------")
@@ -18,7 +19,7 @@ var
             escreva("FEMININO")
          fimse
    fimProcedimento
-   
+
    procedimento resultado()
    inicio
       limpatela
@@ -26,51 +27,42 @@ var
       escreval("                     RESULTADO")
       escreval("-----------------------------------------------------")
    fimProcedimento
-
+   
 inicio
-   stop <- "S"
    repita
       escreval("-----------------------------")
       escreval("           RELATÓRIO")
       escreval("-----------------------------")
       escreva("Digite seu nome: ")
       leia(nome)
-      escreval("{1} MASCULINO  {2} FEMININO")
+      escreval("{1} MASCULINO   {2} FEMININO")
       escreva("Digite seu gênero: ")
       leia(sexo)
+      escreva("Digite sua idade: ")
       aleatorio 1,100
       leia(idade)
       limpatela
       aleatorio off
       cabeca()
+
       //Item 1
-      se (maiorIdade < idade) entao
-         maiorIdade <- idade
-      fimse
-      //Item 2,3
-      se (sexo = 1) entao
-         h <- h + 1
-         somaIdadeHomens <- somaIdadeHomens + idade
-      senao
-         menorIdade <- 100
-         se (menorIdade > idade) entao
-            menorIdade <- idade
-         fimse
+      contIdade <- contIdade + 1
+      //Item 2
+      somaIdade <- somaIdade + idade
+      //Item 3
+      se (idade >= 21) entao
+         y <- y + 1
       fimse
       escreval
       escreva("Deseja continuar? {S/N}")
-      leia(stop)
+      leia(i)
       limpatela
-   ate (stop = "N") ou (stop = "n")
-      //Item 4
-      xHomens <- somaIdadeHomens/h
+   ate (i = "N") ou (i = "n")
+   //Item 2
+   x <- somaIdade/contIdade
    resultado()
-   escreval("A maior idade lida foi de ", maiorIdade)
-   escreval("Foram cadastrados ",h," homens.")
-   escreval("A idade da mulher mais jovem é de ", menorIdade," anos.")
-   escreval("A média de idade dos homens é de ", xHomens:3:2," anos.")
+   escreval("Foram digitadas ", contIdade," idades.")
+   escreval("A média de idade é de ", x:3:2," anos.")
+   escreval("No grupo em questão ",y," tem 21 anos ou mais.")
    escreval("-----------------------------------------------------")
-
-   
-   
 fimalgoritmo
